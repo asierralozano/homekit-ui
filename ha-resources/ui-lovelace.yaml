@@ -1,0 +1,13 @@
+title: Home
+
+# Button card templates
+decluttering_templates:
+  !include_dir_merge_named /config/lovelace/decluttering_templates/
+
+button_card_templates:
+  !include_dir_merge_named /config/lovelace/button_card_templates/
+
+background: var(--background-image)
+views:
+    # Include all the generated views here!
+#  - !include /config/lovelace/views/view_main.yaml

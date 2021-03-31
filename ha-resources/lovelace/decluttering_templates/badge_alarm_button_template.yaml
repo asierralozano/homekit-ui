@@ -1,0 +1,108 @@
+badge_alarm_button:
+  default:
+    - entity: sensor.numero_de_puertas_o_ventanas_abiertas
+    - name: Lights
+    - icon: mdi:door
+    - color: var(--paper-item-icon-active-color)
+    - background_color: var(--button-card-on-background)
+    - text_color: var(--button-card-on-text-color)
+    - svg_fill_on: "#D21919"
+    - cust_1_text_color: var(--button-card-cust-1-on-text-color)
+    - svg_path: "m 6,20 h 12 c 1.104569,0 2,0.895431 2,2 H 4 C 4,20.895431 4.8954305,20 6,20 M 12,5 c 3.313708,0 5.815831,-0.4569325 5.857143,2.786 L 18,19 H 6 L 6.047619,7.786 C 6.0613371,4.5554763 8.6862915,5 12,5 Z"
+    - svg_path_on: "m 12,5 c 3.313708,0 5.815831,-0.4569325 5.857143,2.786 L 18,19 H 6 L 6.047619,7.786 C 6.0613371,4.5554763 8.6862915,5 12,5 Z"
+    - state:
+        - value: "disarmed"
+          styles:
+            card:
+              #- background-color: var(--button-card-background-color)
+              - color: var(--button-card-text-color) #'#040404'
+            icon:
+              - color: var(--paper-item-icon-color)
+            custom_fields:
+              svg_icon:
+                - --paper-item-icon-active-color: var(--paper-item-icon-color)
+                - background-color: var(--button-card-background-color)
+              cust_1:
+                - color: var(--button-card-cust-1-text-color) #'#6F7075'
+
+        - value: "unavailable"
+          styles:
+            icon:
+              - color: var(--button-card-disabled-text-color)
+            name:
+              - color: var(--button-card-disabled-text-color)
+            custom_fields:
+              svg_icon:
+                - --paper-item-icon-active-color: var(--button-card-disabled-text-color)
+              cust_1:
+                - color: var(--button-card-disabled-text-color)
+
+  card:
+    type: custom:decluttering-card
+    template: badge_button_svg
+    variables:
+      - entity: "[[entity]]"
+      - name: "[[name]]"
+      - icon: "[[icon]]"
+      - svg_fill: "[[svg_fill]]"
+      - svg_path: "[[svg_path]]"
+      - svg_fill_on: "[[svg_fill_on]]"
+      - svg_path_on: "[[svg_path_on]]"
+      - color: "[[color]]"
+      - color_type: "[[color_type]]"
+      - background_color: "[[background_color]]"
+      - text_color: "[[text_color]]"
+      - text_transform: none
+      - cust_1_text_color: "[[cust_1_text_color]]"
+      - cust_1_icon_color: "[[cust_1_icon_color]]"
+      - cust_1_field: "[[[
+          var state = entity.state;
+          if (state == 'armed_away')
+          return 'Fuera de Casa';
+          else if (state == 'armed_home')
+          return 'En Casa';
+          else if (state == 'arming')
+          return 'Armando';
+          else if (state == 'disarmed')
+          return 'Desarmado';
+          else
+          return state;
+          ]]]"
+      - state: "[[state]]"
+      - hold_action:
+          action: more-info
+      - tap_action:
+          action: navigate
+          navigation_path: security
+      #     #haptic: heavy
+      #     action: fire-dom-event
+      #     browser_mod:
+      #       command: popup
+      #       hide_header: false
+      #       title: '[[name]]'
+      #       large: false
+
+      #       card:
+
+      #         type: vertical-stack
+      #         cards:
+
+      #           - !include /config/lovelace/styles/separator_card.yaml
+
+      #           - type: horizontal-stack
+      #             cards:
+
+      #               - type: custom:button-card
+      #                 template: shoulder_blank_card
+
+      #               - type: custom:layout-card
+      #                 min_columns: 1
+      #                 max_columns: 3
+      #                 cards:
+
+      #                   - !include /config/lovelace/cards/xiaomi/card_motion_sensors.yaml
+
+      #               - type: custom:button-card
+      #                 template: shoulder_blank_card
+
+      #           - !include /config/lovelace/styles/separator_card.yaml

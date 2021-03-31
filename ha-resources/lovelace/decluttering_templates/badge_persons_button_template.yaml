@@ -1,0 +1,101 @@
+badge_persons_button:
+
+  default:
+    - entity: sensor.number_of_persons_home
+    - name: Presence
+    - icon: mdi:account-circle
+    - background_color: var(--button-card-on-background)
+    - text_color: var(--button-card-on-text-color)
+    - svg_path: 'M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z'
+    - svg_fill_on: var(--paper-item-icon-active-color)
+    - svg_path_on: 'M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z'
+    - cust_1_text_color: var(--button-card-cust-1-on-text-color)
+    - state:
+        - value: "0"
+          styles:
+            card:
+              #- background-color: var(--button-card-background-color)
+              - color: var(--button-card-text-color) #'#040404'
+            custom_fields:
+              svg_icon:
+                - --paper-item-icon-active-color: var(--paper-item-icon-color)
+                - background-color: var(--button-card-background-color)
+              cust_1:
+                - color: var(--button-card-cust-1-text-color) #'#6F7075'
+        - value: "unavailable"
+          styles:
+            icon:
+              - color: var(--button-card-disabled-text-color)
+            name:
+              - color: var(--button-card-disabled-text-color)
+            custom_fields:
+              svg_icon:
+                - --paper-item-icon-active-color: var(--button-card-disabled-text-color)
+              cust_1:
+                - color: var(--button-card-disabled-text-color)
+
+
+  card:
+    type: custom:decluttering-card
+    template: badge_button_svg
+    variables:
+      - entity: '[[entity]]'
+      - name: '[[name]]'
+      - icon: '[[icon]]'
+      - svg_fill: '[[svg_fill]]'
+      - svg_path: '[[svg_path]]'
+      - svg_fill_on: '[[svg_fill_on]]'
+      - svg_path_on: '[[svg_path_on]]'
+      - color: '[[color]]'
+      - color_type: '[[color_type]]'
+      - background_color: '[[background_color]]'
+      - text_color: '[[text_color]]'
+      - text_transform: none
+      - cust_1_text_color: "[[cust_1_text_color]]"
+      - cust_1_icon_color: "[[cust_1_icon_color]]"
+      - cust_1_field: "[[[
+            if ( entity.state == '0' )
+              return 'Nobody Home';
+            else if ( entity.state == '1' )
+              return states['sensor.only_person_home'].state + ' Home';
+            else
+              return entity.state + ' Persons Home'; 
+          ]]]"
+      - state: "[[state]]"
+      - hold_action:
+          action: more-info
+      - tap_action:
+          #haptic: heavy
+          action: fire-dom-event
+          browser_mod:
+            command: popup
+            hide_header: false
+            title: '[[name]]'
+            large: false
+            
+            card:
+
+              type: vertical-stack
+              cards:
+
+                - !include /config/lovelace/styles/separator_card.yaml
+        
+                - type: horizontal-stack
+                  cards:
+
+                    - type: custom:button-card
+                      template: shoulder_blank_card
+                        
+                    - type: custom:layout-card
+                      min_columns: 1
+                      max_columns: 3
+                      cards:
+
+                        - !include /config/lovelace/cards/presence/card_presence.yaml
+
+                        #- !include /config/lovelace/styles/view_bottom_gap.yaml
+
+                    - type: custom:button-card
+                      template: shoulder_blank_card
+
+                - !include /config/lovelace/styles/separator_card.yaml

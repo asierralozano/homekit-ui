@@ -1,0 +1,46 @@
+doow_window_sensor_button:
+  default:
+    - icon: mdi:door-open
+    - cust_1_field: "[[[
+        if ( entity.state == 'off' )
+        return 'Cerrado';
+        else
+        return 'Abierto';
+        ]]]"
+    - color: auto-no-temperature
+    - svg_path: "M12,3C10.89,3 10,3.89 10,5H3V19H2V21H22V19H21V5C21,3.89 20.11,3 19,3H12M12,5H19V19H12V5M5,11H7V13H5V11Z"
+    - svg_fill_on: var(--button-card-light-color-no-temperature)
+    - svg_path_on: "M12,3C10.89,3 10,3.89 10,5H3V19H2V21H22V19H21V5C21,3.89 20.11,3 19,3H12M12,5H19V19H12V5M5,11H7V13H5V11Z"
+    - corner_background_color: "[[[ return 'var(--secondary-text-color)'; ]]]"
+    - corner_border_radius: 12px
+    - corner_text_color: "var(--button-card-text-field-color)"
+
+  card:
+    type: custom:decluttering-card
+    template: button_two_rows_svg
+    variables:
+      - entity: "[[entity]]"
+      - name: "[[name]]"
+      - icon: "[[icon]]"
+      - svg_fill: "[[svg_fill]]"
+      - svg_path: "[[svg_path]]"
+      - svg_fill_on: "[[svg_fill_on]]"
+      - svg_path_on: "[[svg_path_on]]"
+      - color: "[[color]]"
+      - color_type: "[[color_type]]"
+      - corner_text_color: "[[corner_text_color]]"
+      - corner_icon_color: ""
+      - cust_1_text_color: "[[cust_1_text_color]]"
+      - cust_1_icon_color: "[[cust_1_icon_color]]"
+      - cust_2_text_color: "[[cust_2_text_color]]"
+      - cust_2_icon_color: "[[cust_2_icon_color]]"
+      - corner_field: "[[[ return states['[[battery_level_sensor]]'].state + '%'; ]]]"
+      - corner_border_radius: "[[corner_border_radius]]"
+      - corner_background_color: "[[corner_background_color]]"
+      - cust_1_field: "[[cust_1_field]]"
+      - cust_2_field: "[[cust_2_field]]"
+      - tap_action:
+          action: more-info
+      - hold_action:
+          action: more-info
+      - state: "[[state]]"
