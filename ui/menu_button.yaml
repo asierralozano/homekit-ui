@@ -1,0 +1,22 @@
+identifier: homekit-ui
+name: HKMenuButton
+template: menu_button
+
+properties:
+  entity:
+    limited_type: str
+  name:
+    limited_type: str
+  icon:
+    limited_type: str
+  custom_field_1:
+    limited_type: str
+  path:
+    limited_type: str
+    optional: false
+  color:
+    limited_type: str
+
+outputs:
+  out:
+    limited_type: card

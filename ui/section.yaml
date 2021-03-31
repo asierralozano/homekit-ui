@@ -1,0 +1,22 @@
+identifier: homekit-ui
+name: HKSection
+template: section
+
+properties:
+  title:
+    limited_type: str
+    optional: false
+  columns:
+    limited_type: int
+  square:
+    limited_type: bool
+
+inputs:
+  cards:
+    limited_type: card
+    multi_input: true
+    optional: false
+
+outputs:
+  out:
+    limited_type: card

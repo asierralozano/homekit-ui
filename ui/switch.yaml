@@ -1,0 +1,16 @@
+identifier: homekit-ui
+name: HKSwitch
+template: switch
+
+properties:
+  entity:
+    limited_type: str
+    optional: false
+  name:
+    limited_type: str
+  icon:
+    limited_type: str
+
+outputs:
+  out:
+    limited_type: card

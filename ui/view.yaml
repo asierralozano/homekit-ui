@@ -1,0 +1,23 @@
+identifier: homekit-ui
+name: HKView
+template: view
+
+inputs:
+  badges:
+    limited_type: badges
+  cards:
+    limited_type: card
+    multi_input: true
+    optional: false
+
+properties:
+  title:
+    limited_type: str
+    optional: false
+  icon:
+    limited_type: str
+  path:
+    limited_type: str
+    optional: false
+  visible:
+    limited_type: bool

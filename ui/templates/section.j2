@@ -1,0 +1,16 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: title_button_card
+        variables:
+          - name: {{ title }}
+
+  - type: grid
+    columns: {{ columns|default(3) }}
+    square: {{ square|default(true)|lower }}
+    cards:
+      {% for card in cards %}
+      - {{ card|indent(8) }}
+      {% endfor %}

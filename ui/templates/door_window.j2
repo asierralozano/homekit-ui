@@ -1,0 +1,8 @@
+type: custom:decluttering-card # Work Room Light
+template: doow_window_sensor_button
+variables:
+  - entity: {{ entity }}
+  - name: {{ name }}
+  {% if battery_level_sensor -%}
+  - battery_level_sensor: {{ battery_level_sensor }}
+  {%- endif %}

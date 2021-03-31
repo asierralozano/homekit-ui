@@ -1,0 +1,8 @@
+type: custom:decluttering-card
+template: motion_sensor_button
+variables:
+  - entity: {{ entity }}
+  - name: {{ name }}
+  {% if light_sensor -%}
+  - light_level_sensor: {{ light_sensor }}
+  {%- endif %}

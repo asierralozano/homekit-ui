@@ -1,0 +1,26 @@
+title: {{ title }}
+icon: {{ icon|default('mdi:home') }}
+path: {{ path }}
+visible: {{ visible|default(false)|lower }}
+panel: true
+
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: view_title
+        variables:
+          - title: {{ title }}
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: shoulder_blank_card
+
+          - type: custom:layout-card
+            min_columns: 1
+            max_columns: 3
+            cards:
+              {% for card in cards %}
+              - {{ card|indent(16)}}
+              {% endfor %}

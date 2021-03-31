@@ -1,0 +1,18 @@
+type: custom:decluttering-card
+template: menu_new_button
+variables:
+  {% if entity -%}
+  - entity: {{ entity }}
+  {% endif -%}
+  - name: {{ name }}
+  - icon: {{ icon|default('mdi:home') }}
+  {% if custom_field_1 %}
+  - cust_1_field: {{ custom_field_1 }}
+  {% endif -%}
+  - path: {{ path }}
+  {%- if entity and entity.startswith('light') -%}
+  {%- set custom_color = 'var(--button-card-light-color)' -%}
+  {%- else -%}
+  {%- set custom_color = 'green' -%}
+  {%- endif %}
+  - color: {{ color if color else custom_color}}

@@ -1,0 +1,16 @@
+identifier: homekit-ui
+name: HKLight
+template: light
+
+properties:
+  entity:
+    limited_type: str
+    optional: false
+  name:
+    limited_type: str
+  svg_icon:
+    limited_type: dict
+
+outputs:
+  out:
+    limited_type: card

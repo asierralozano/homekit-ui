@@ -1,0 +1,16 @@
+identifier: homekit-ui
+name: HKMotion
+template: motion
+
+properties:
+  entity:
+    limited_type: str
+    optional: false
+  name:
+    limited_type: str
+  light_level_sensor:
+    limited_type: str
+
+outputs:
+  out:
+    limited_type: card
