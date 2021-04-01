@@ -2,5 +2,5 @@ type: custom:decluttering-card
 template: switch_button
 variables:
   - entity: {{ entity }}
-  - name: {{ name }}
-  - icon: {{ icon|default('mdi:power-plug') }}
+  - name: {{ entity_name }}
+  - icon: {{ entity_icon|default('mdi:power-plug') }}

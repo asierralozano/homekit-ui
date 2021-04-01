@@ -2,7 +2,7 @@ type: custom:decluttering-card
 template: color_light_button
 variables:
   - entity: {{ entity }}
-  - name: {{ name }}
+  - name: {{ entity_name }}
   {% if svg_icon -%}
   - svg_path: {{ svg_icon.svg_path }}
   - svg_path_on: {{ svg_icon.svg_path_on }}

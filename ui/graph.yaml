@@ -6,9 +6,9 @@ properties:
   entity:
     limited_type: str
     optional: false
-  name:
+  entity_name:
     limited_type: str
-  icon:
+  entity_icon:
     limited_type: str
 
 outputs:

@@ -6,7 +6,7 @@ properties:
   entity:
     limited_type: str
     optional: false
-  name:
+  entity_name:
     limited_type: str
   battery_level_sensor:
     limited_type: str

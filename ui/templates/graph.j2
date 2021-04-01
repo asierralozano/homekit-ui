@@ -2,5 +2,5 @@ type: custom:decluttering-card
 template: graph
 variables:
   - entity: {{ entity }}
-  - name: {{ name }}
-  - icon: {{ icon|default('mdi:thermometer') }}
+  - name: {{ entity_name }}
+  - icon: {{ entity_icon|default('mdi:thermometer') }}

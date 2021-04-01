@@ -14,10 +14,12 @@ properties:
   title:
     limited_type: str
     optional: false
-  icon:
+  view_icon:
     limited_type: str
+    default: 'mdi:home'
   path:
     limited_type: str
     optional: false
-  visible:
+  visibility:
     limited_type: bool
+    default: false

@@ -4,8 +4,8 @@ variables:
   {% if entity -%}
   - entity: {{ entity }}
   {% endif -%}
-  - name: {{ name }}
-  - icon: {{ icon|default('mdi:home') }}
+  - name: {{ entity_name }}
+  - icon: {{ entity_icon|default('mdi:home') }}
   {% if custom_field_1 %}
   - cust_1_field: {{ custom_field_1 }}
   {% endif -%}

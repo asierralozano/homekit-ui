@@ -8,8 +8,10 @@ properties:
     optional: false
   columns:
     limited_type: int
+    default: 3
   square:
     limited_type: bool
+    default: true
 
 inputs:
   cards:
